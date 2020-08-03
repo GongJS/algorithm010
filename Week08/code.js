@@ -25,11 +25,10 @@ sort2 = (arr) => {
     }
     arr[pre + 1] = cur
   }
-  console.log(arr)
   return arr
 } 
 
-// 选择排序
+// 冒泡
 sort3 = (arr) => {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
@@ -40,7 +39,7 @@ sort3 = (arr) => {
       }
     }
   }
-  console.log(arr)
+  return arr
 }
 
 // 归并排序
@@ -78,19 +77,17 @@ swap = (arr,i,j) => {
   return [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 handlePoint = (arr,start, end) => {
-  if (end - start === 0) return -1
-  if (end - start === 1) return 0
-  let point = arr[start]
-  let k = 1
-  while(end - k > 1) {
-    if (arr[k] > point) {
+  if ((end - start) <= 1) return arr.length - 1
+  let k = start + 1
+  while(end - k > 0) {
+    if (arr[k] > arr[start]) {
       swap(arr,k,end-1)
       end--
     } else {
       k++
     }
   }
-  swap(arr,0,k - 1)
+  swap(arr,start,k - 1)
   return k -1
 }
 sort5 = (arr) => {
@@ -101,7 +98,7 @@ _sort5 = (arr,start,end) => {
     return arr
   }
   let point = handlePoint(arr, start, end)
-  _sort5(arr, start,point)
-  _sort5(arr, point+1,end)
+  _sort5(arr, start, point)
+  _sort5(arr, point+1, end)
   return arr
 }
