@@ -88,6 +88,7 @@ handlePoint = (arr,start, end) => {
     }
   }
   swap(arr,start,k - 1)
+  console.log(k -1, arr)
   return k -1
 }
 sort5 = (arr) => {
@@ -102,3 +103,5 @@ _sort5 = (arr,start,end) => {
   _sort5(arr, point+1, end)
   return arr
 }
+
+handlePoint([3,1,2],0,3)
